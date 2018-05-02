@@ -1,0 +1,149 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/**
+  * BASE
+**/
+html {
+  font-size: 1.3em;
+}
+
+body {
+  background: #f5f3f4;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
+  line-height: 1.4;
+}
+button {
+  padding: 0;
+}
+input[type="search"], input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+/**
+* LAYOUT
+**/
+header {
+  margin: 2em;
+}
+
+.form-element {
+  height: 2em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  display: inline-block;
+  font-size: 1.10em;
+  outline: 0;
+}
+
+.search {
+  width: 60%;
+  padding: 0.50em;
+  padding-right: 2em;
+  -webkit-appearance: none;
+}
+.search:focus {
+  border-color: #36c;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.btn {
+  background-color: #36c;
+  color: #FFF;
+  font-size: 0.75em;
+  height: 3em;
+  width: 3em;
+  vertical-align: top;
+  border: 0;
+  cursor: pointer;
+}
+  /*
+.hover {
+  -webkit-transition: all 0.30s ease 0.30s;
+  -moz-transition: all 0.30s ease 0.30s;
+  transition: all 0.30s ease 0.30s;
+  transform: rotate(-180deg);
+}
+*/
+#lang-selector-container {
+  display: inline-block;
+  position: relative;
+  top: -1.10em;
+  left: -2em;
+}
+#lang-selector-container .selector {
+  position: absolute;
+  cursor: pointer;
+}
+#lang-selector-container .selected-lang {
+  position: absolute;
+  font-size: 0.43em;
+  top: 2.45em;
+  left: 0.10em;
+  color: #FFF;
+  background-color: #B1B1B1;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#lang-selector-container .list-container {
+  position: absolute;
+  top: 1.79em;
+  width: 2.70em;
+  border: solid #CCC 1px;
+  left: -1em;
+  border-radius: 5px;
+}
+#lang-selector-container .list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.75em;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+#lang-selector-container .list li {
+  border-bottom: 1px solid #CCC;
+}
+#lang-selector-container .list li:hover,
+#lang-selector-container .list li:focus
+ {
+  background-color: #36c;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#search-results {
+  padding-top: 2em;
+  display: grid;
+  grid-template: none / repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+#search-results .result,
+#search-results .result img
+{
+  border: 1px solid #999;
+  border-radius: 0.20em;
+}
+
+#search-results .result img {
+  width: 70%;
+  min-width: 14em;
+  padding: 0.50em;
+}
+#search-results .result p {
+  text-align: left;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}

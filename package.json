@@ -1,0 +1,38 @@
+{
+  "name": "fcc-wikipedia-viewer",
+  "version": "1.0.0",
+  "description": "FCC Wikipedia Viewer Project.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusion35/fcc-wikipedia-viewer.git"
+  },
+  "keywords": [
+    "FCC",
+    "WikipediaViewer"
+  ],
+  "author": "Devinder Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fusion35/fcc-wikipedia-viewer/issues"
+  },
+  "homepage": "https://github.com/fusion35/fcc-wikipedia-viewer#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-cache": "^1.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-uglify-es": "^1.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="multi">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Wikipedia Viewer - FCC Intermediate Front End Development Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCC Wikipedia Viewer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <!--
+    <script>
+      FontAwesomeConfig = { searchPseudoElements: true };
+    </script>
+    <script async src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+  -->
+  </head>
+  <body>
+    <header>
+      <span>FCC Wikipedia Viewer</span>
+    </header>
+    <main>
+      <div class="search-input">
+        <input type="search" class="form-element search"
+               placeholder="Search.."
+               aria-label="Search Wikipedia"
+               size="20"
+               autocomplete="off"
+               list="suggestions"
+               autofocus="true"
+               >
+
+        <div id="lang-selector-container">
+        <span class="selector"><i class="fas fa-chevron-down fa-lg"></i></span>
+        <span class="selected-lang">EN</span>
+        <div class="list-container hide">
+          <ul class="list">
+            <li>EN</li>
+            <li>FR</li>
+            <li>ES</li>
+            <li>PT</li>
+            <li>DE</li>
+            <li>PT</li>
+            <li>RU</li>
+            <li>ZH</li>
+          </ul>
+      </div>
+      </div>
+        <button class="form-element btn btn-search"><i class="fas fa-search fa-lg"></i></button>
+        <button id="btn-random" title="Random Wikipedia Entry" class="form-element btn btn-random" data-url="https://[LANG].wikipedia.org/wiki/Special:Random"><i class="fas fa-random fa-lg"></i></button>
+      </div>
+      <div id="search-results"></div>
+    </main>
+    <footer>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
