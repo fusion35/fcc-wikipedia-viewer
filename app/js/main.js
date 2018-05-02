@@ -99,7 +99,7 @@ var WikipediaViewerModule = (function() {
                         <a href="${(page.fullurl?page.fullurl:'#')}" target="_blank">
                           <h4>${(page.title?page.title:'')}</h4>
                         </a>
-                        <img src="${(page.thumbnail && page.thumbnail.source?page.thumbnail.source:'/images/Wikipedia-logo-v2.png')}" width="${(page.thumbnail && page.thumbnail.width?page.thumbnail.width:'0')}" height="${(page.thumbnail && page.thumbnail.height?page.thumbnail.height:'')}">
+                        <img src="${(page.thumbnail && page.thumbnail.source?page.thumbnail.source:'images/Wikipedia-logo-v2.png')}" width="${(page.thumbnail && page.thumbnail.width?page.thumbnail.width:'0')}" height="${(page.thumbnail && page.thumbnail.height?page.thumbnail.height:'')}">
                         <p>${(page.extract?page.extract:'')}</p>
                      </div>`;
         });
