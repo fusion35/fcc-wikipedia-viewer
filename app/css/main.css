@@ -95,6 +95,7 @@ header {
   border: solid #CCC 1px;
   left: -1em;
   border-radius: 5px;
+  background: #f5f3f4;
 }
 #lang-selector-container .list {
   margin: 0;
@@ -146,4 +147,35 @@ header {
   text-align: left;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+.spinner {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+}
+.spinner circle {
+  fill: none;
+  stroke: slategray;
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-dasharray: 0, 0, 70, 194;
+  stroke-dashoffset: 0;
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+}
+@-webkit-keyframes spin {
+  to {
+    stroke-dashoffset: -264;
+  }
+}
+@keyframes spin {
+  to {
+    stroke-dashoffset: -264;
+  }
 }

@@ -10,30 +10,17 @@
 
   let btnSearch = document.querySelector('.btn-search');
   btnSearch.addEventListener("click", () => {
+    toggleHide(document.querySelector('.spinner'));
     WikipediaViewerModule.populateSearchResult();
   }, false);
-/*
-  function updateViewBox() {
-    let svg = btn.querySelector('svg');
-    if (svg) {
-      svg.setAttribute('viewBox','-350, -300, 1100, 1100');
-      svg.style.visibility = 'visible';
-    }
-    else {
-        window.requestAnimationFrame(updateViewBox);
-    }
-  }
-  window.requestAnimationFrame(updateViewBox);
-*/
+
  let langSelector = document.querySelector('#lang-selector-container .selector');
  if (langSelector) {
    langSelector.addEventListener('click', () => {
      let langMask = document.querySelector('#lang-selector-container .list-container');
      let langList = document.querySelector('#lang-selector-container .list');
      let selectedLang =  document.querySelector('#lang-selector-container .selected-lang').innerText;
-
-     langMask.classList.contains('hide') ? langMask.classList.remove('hide') : langMask.classList.add('hide');
-
+     toggleHide(langMask);
    }, false);
  }
 
@@ -43,12 +30,17 @@
      let selectedLang =  document.querySelector('#lang-selector-container .selected-lang');
      let langMask = document.querySelector('#lang-selector-container .list-container');
      selectedLang.textContent = e.target.textContent;
-     langMask.classList.contains('hide') ? langMask.classList.remove('hide') : langMask.classList.add('hide');
+     toggleHide(langMask);
    }, false);
  }
 
 })();
 
+function toggleHide(element) {
+  if (element) {
+    element.classList.contains('hide') ? element.classList.remove('hide') : element.classList.add('hide');
+  }
+}
 
 var WikipediaViewerModule = (function() {
   function _get(url) {
@@ -104,6 +96,7 @@ var WikipediaViewerModule = (function() {
                      </div>`;
         });
         resultContainer.innerHTML = result;
+        toggleHide(document.querySelector('.spinner'));
       }
     });
   }
