@@ -10,9 +10,20 @@
 
   let btnSearch = document.querySelector('.btn-search');
   btnSearch.addEventListener("click", () => {
-    toggleHide(document.querySelector('.spinner'));
-    WikipediaViewerModule.populateSearchResult();
+    if (searchText() == '') {
+      let input = document.querySelector('.search-input .search');
+      input.classList.add('empty');
+    }
+    else {
+      toggleElementClass(document.querySelector('.spinner'), 'hide');
+      WikipediaViewerModule.populateSearchResult();
+    }
   }, false);
+
+ let searchInput = document.querySelector('.search-input .search');
+ searchInput.addEventListener('focusin', () => {
+   searchInput.classList.contains('empty') ? searchInput.classList.remove('empty') : '';
+ }, false);
 
  let langSelector = document.querySelector('#lang-selector-container .selector');
  if (langSelector) {
@@ -20,7 +31,7 @@
      let langMask = document.querySelector('#lang-selector-container .list-container');
      let langList = document.querySelector('#lang-selector-container .list');
      let selectedLang =  document.querySelector('#lang-selector-container .selected-lang').innerText;
-     toggleHide(langMask);
+     toggleElementClass(langMask, 'hide');
    }, false);
  }
 
@@ -30,16 +41,20 @@
      let selectedLang =  document.querySelector('#lang-selector-container .selected-lang');
      let langMask = document.querySelector('#lang-selector-container .list-container');
      selectedLang.textContent = e.target.textContent;
-     toggleHide(langMask);
+     toggleElementClass(langMask, 'hide');
    }, false);
  }
 
 })();
 
-function toggleHide(element) {
+function toggleElementClass(element, cls) {
   if (element) {
-    element.classList.contains('hide') ? element.classList.remove('hide') : element.classList.add('hide');
+    element.classList.contains(cls) ? element.classList.remove(cls) : element.classList.add(cls);
   }
+}
+
+function searchText() {
+  return document.querySelector('.search-input .search').value;
 }
 
 var WikipediaViewerModule = (function() {
@@ -67,12 +82,8 @@ var WikipediaViewerModule = (function() {
     return document.querySelector('#lang-selector-container .selected-lang').textContent.toLowerCase();
   }
 
-  function _searchText() {
-    return document.querySelector('.search-input .search').value;
-  }
-
   function _searchURL() {
-    return `https://${_selectedLang()}.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrlimit=20&prop=info|pageimages|extracts&inprop=url&exlimit=max&pilimit=max&pithumbsize=400&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=${_searchText()}`;
+    return `https://${_selectedLang()}.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrlimit=20&prop=info|pageimages|extracts&inprop=url&exlimit=max&pilimit=max&pithumbsize=400&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=${searchText()}`;
   }
 
   function _getJSON() {
@@ -96,7 +107,7 @@ var WikipediaViewerModule = (function() {
                      </div>`;
         });
         resultContainer.innerHTML = result;
-        toggleHide(document.querySelector('.spinner'));
+        toggleElementClass(document.querySelector('.spinner'), 'hide');
       }
     });
   }
