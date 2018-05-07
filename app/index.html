@@ -27,7 +27,6 @@
                aria-label="Search Wikipedia"
                size="20"
                autocomplete="off"
-               list="suggestions"
                autofocus="true"
                >
 
@@ -54,6 +53,10 @@
         <circle cx="50" cy="50" r="42" transform="rotate(-90,50,50)" />
       </svg>
       <div id="search-results"></div>
+      <div id="no-result" class="hide">
+        <h3>Nothing found for <span></span></h3>
+        <button class="form-element btn btn-redo"><i class="fas fa-redo fa-lg"></i></button>
+      </div>
     </main>
     <footer>
     </footer>

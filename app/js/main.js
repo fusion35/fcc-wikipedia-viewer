@@ -4,15 +4,18 @@
     let url = btnRandom.dataset.url;
     let selectedLang =  document.querySelector('#lang-selector-container .selected-lang').textContent.toLowerCase();
     url = url.replace('[LANG]',selectedLang);
-    console.log(url);
     window.open(url);
+  }, false);
+
+  let searchInput = document.querySelector('.search-input .search');
+  searchInput.addEventListener('focusin', () => {
+    searchInput.classList.contains('empty') ? searchInput.classList.remove('empty') : '';
   }, false);
 
   let btnSearch = document.querySelector('.btn-search');
   btnSearch.addEventListener("click", () => {
     if (searchText() == '') {
-      let input = document.querySelector('.search-input .search');
-      input.classList.add('empty');
+      searchInput.classList.add('empty');
     }
     else {
       toggleElementClass(document.querySelector('.spinner'), 'hide');
@@ -20,10 +23,12 @@
     }
   }, false);
 
- let searchInput = document.querySelector('.search-input .search');
- searchInput.addEventListener('focusin', () => {
-   searchInput.classList.contains('empty') ? searchInput.classList.remove('empty') : '';
- }, false);
+  let btnRedo = document.querySelector('.btn-redo');
+  btnRedo.addEventListener("click", () => {
+    searchInput.value = '';
+    searchInput.focus();
+    toggleElementClass(document.querySelector('#no-result'), 'hide');
+  }, false);
 
  let langSelector = document.querySelector('#lang-selector-container .selector');
  if (langSelector) {
@@ -87,12 +92,14 @@ var WikipediaViewerModule = (function() {
   }
 
   function _getJSON() {
-    console.log(_searchURL());
     return _get(_searchURL()).then(JSON.parse)
   }
 
   function _searchResult() {
     let resultContainer = document.querySelector('#search-results');
+    resultContainer.innerHTML = '';
+    let noResult = document.querySelector('#no-result');
+    (!noResult.classList.contains('hide'))?noResult.classList.add('hide'):'';
     _getJSON().then(data => {
       if (data && data.query && data.query.pages) {
         let pages = data.query.pages;
@@ -107,8 +114,13 @@ var WikipediaViewerModule = (function() {
                      </div>`;
         });
         resultContainer.innerHTML = result;
-        toggleElementClass(document.querySelector('.spinner'), 'hide');
       }
+      else {
+        let noResult = document.querySelector('#no-result');
+        noResult.querySelector('h3>span').innerHTML = searchText();
+        toggleElementClass(noResult, 'hide');
+      }
+      toggleElementClass(document.querySelector('.spinner'), 'hide');
     });
   }
 
